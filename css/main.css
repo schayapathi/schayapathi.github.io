@@ -1,8 +1,9 @@
 body {
     margin: 60px auto;
     width: 70%;
-    color: #ffe7ba;
-    background-color: navy;
+    color: #ac7aff;
+    background-color: #ffe7ba;
+    font-family: 'Arima Madurai';
 }
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
@@ -16,7 +17,7 @@ nav ul li, footer ul li {
 }
 a {
     text-decoration: none;
-    color: #ffe7ba;
+    color: #ac7aff;
 }
 a:hover {
     text-decoration: underline;
@@ -31,7 +32,8 @@ p {
     color: #333;
 }
 footer {
-    border-top: 1px solid black;
+    border-top: 1px solid #ac7aff;
+;
     font-size: .8em;
 }
 
