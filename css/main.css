@@ -10,14 +10,16 @@ body {
     font-family: 'Open Sans';
 }
 
-.topnav {
+.topnav li {
     font-family: 'Arima Madurai'
     color: #ac7aff;
+    float: left;
 }
 
 .topnav-right {
     font-family: 'Open Sans'
     color: black;
+    float: right;
 }
 
 .topnav a.active {
@@ -26,7 +28,8 @@ body {
 
 a {
     text-decoration: none;
-    color: #ac7aff;
+    color: black;
+
 }
 a:hover {
     text-decoration: underline;
