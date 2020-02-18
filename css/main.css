@@ -52,3 +52,10 @@ li {
     list-style: none;
     list-style-type: none;
 }
+
+ul.name {
+    color: #ac7aff
+}
+ul.tabs {
+    color: black;
+}
