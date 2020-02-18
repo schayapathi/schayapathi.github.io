@@ -9,17 +9,8 @@ body {
     background-color: white;
     font-family: 'Open Sans';
 }
-nav ul, footer ul {
-    font-family:'Open Sans';
-    padding: 0px;
-    list-style: none;
-    font-weight: bold;
-}
-nav ul li, footer ul li {
-    display: inline;
-    margin-right: 20px;
-}
-.topnav li {
+
+.topnav {
     font-family: 'Arima Madurai'
     color: #ac7aff;
 }
