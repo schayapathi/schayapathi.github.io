@@ -1,3 +1,8 @@
+
+header {
+    border-top: 1px solid #ac7aff;
+    font-size: .8em;
+}
 body {
     margin: 40px auto;
     width: 80%;
@@ -14,7 +19,10 @@ nav ul li, footer ul li {
     display: inline;
     margin-left: 20px;
 }
-
+li.title {
+    font-family: 'Arima Madurai'
+    font-weight: bold;
+}
 a {
     text-decoration: none;
     color: #ac7aff;
