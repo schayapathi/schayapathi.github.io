@@ -17,12 +17,22 @@ nav ul, footer ul {
 }
 nav ul li, footer ul li {
     display: inline;
-    margin-left: 20px;
+    margin-right: 20px;
 }
-li.title {
+.topnav li {
     font-family: 'Arima Madurai'
+    color: #ac7aff;
+}
+
+.topnav-right {
+    font-family: 'Open Sans'
+    color: black;
+}
+
+.topnav a.active {
     font-weight: bold;
 }
+
 a {
     text-decoration: none;
     color: #ac7aff;
