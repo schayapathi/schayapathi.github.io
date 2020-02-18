@@ -22,6 +22,7 @@ nav ul, footer ul {
 nav ul li, footer ul li {
     display: inline;
     margin-right: 20px;
+    list-style: none;
 }
 a {
     text-decoration: none;
@@ -41,7 +42,6 @@ p {
 }
 footer {
     border-top: 1px solid #ac7aff;
-;
     font-size: .8em;
 }
 ul.posts { 
@@ -50,4 +50,5 @@ ul.posts {
 }
 ul.posts li {
     list-style: none;
+    list-style-type: none;
 }
