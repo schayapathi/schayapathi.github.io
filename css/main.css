@@ -12,8 +12,9 @@ nav ul, footer ul {
 }
 nav ul li, footer ul li {
     display: inline;
-    margin-right: 20px;
+    margin-left: 20px;
 }
+
 a {
     text-decoration: none;
     color: #ac7aff;
@@ -32,7 +33,6 @@ p {
 }
 footer {
     border-top: 1px solid #ac7aff;
-;
     font-size: .8em;
 }
 
