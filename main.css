@@ -80,25 +80,27 @@ ul.tabs {
 }
 section {
   background: #eee;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px;
   overflow: hidden;
+  text-align: center;
 }
 
 .module {
-  width: 45%;
+  width: 300px;
   min-height: 200px;
+  height: 200px;
   background: white;
-  position: relative;
-  float: left;
   padding: 20px;
+  float: left;
   margin-right: 4%;
   margin-bottom: 4%;
   &:nth-child(even) {
     margin-right: 0;
   }
   box-shadow: 0 1px 3px rgba(black, 0.2);
+  
 }
 .come-in {
   transform: translateY(150px);
