@@ -1,10 +1,10 @@
 body {
-	background-color: white;
     margin: 40px auto;
     width: 100%;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 200;
+	text-align: center;
 }
 .blurb {
 	font-weight: 200;
@@ -99,19 +99,20 @@ li {
 }
 
 section {
-  max-width: 750px;
+  max-width: 950px;
   margin: 0 auto;
   padding: 20px;
   overflow: hidden;
+  grid-row-gap: 20px;
+  text-align: center;
 }
 
 .blog_container {
-  column-count: 2;
-  display: flex;
+  max-width: 2000px;
+  display: inline-grid;
   justify-content: center; /* center horizontally */
   align-items: center; /* center vertically*/
-  column-gap: 40px;
-  padding: 20 50 50 50;
+  padding: 20px 50px 50px 50px;
 }
 
 .fancy_card {
@@ -122,16 +123,18 @@ section {
   overflow: hidden; /* otherwise header image won't respect rounded corners */
   background: white;
   transition: all .5s ease; /* back to normal */
+  bottom: 20px;
 }
 .fancy_card_p {
   font-family: Roboto, sans-serif;
-  width: 300px;
+  width: 350px;
   height: 200px;
   border-radius: 5px;
   box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
   overflow: hidden; /* otherwise header image won't respect rounded corners */
   background: white;
   transition: all .5s ease; /* back to normal */
+  padding-bottom: 20px;
 
 }
 .fancy_card:hover, .fancy_card_p:hover {
@@ -151,9 +154,9 @@ section {
 .title {
   color: #92d4f7;
   font-family: inherit;
-  font-size: 30px;
-  font-weight: 300px;
+  font-size: 25px;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .tags {
