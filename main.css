@@ -33,6 +33,26 @@ nav ul li {
     display: inline;
     list-style: none;
 }
+.container .ml9 {
+  position: relative;
+  font-weight: 200;
+  font-size: 4em;
+}
+
+.container .ml9 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.container .ml9 .letter {
+  transform-origin: 50% 100%;
+  display: inline-block;
+  line-height: 1em;
+}
 .container {
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -113,6 +133,16 @@ section {
   justify-content: center; /* center horizontally */
   align-items: center; /* center vertically*/
   padding: 20px 50px 50px 50px;
+}
+.post {
+  padding: 10px 30px 10px 30px;
+}
+.row {
+  padding-bottom: 25px;
+}
+
+.col-lg-4 {
+	text-align: center;
 }
 
 .fancy_card {
@@ -210,7 +240,7 @@ footer {
   text-align: center;
   line-height: 1em;
   font-weight: 300;
-  letter-spacing: .5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   padding: 35px 0px 25px 0px;
 }

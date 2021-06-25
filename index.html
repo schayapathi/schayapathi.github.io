@@ -26,10 +26,44 @@
    		</nav>
     	
 		<div id="home" class="container">	
-   		    <p>swati chayapathi</p>
+			<h1 class="m19">
+				<span class="text-wrapper">
+					<span class="letters">Swati Chayapathi</span>
+				</span>
+			</h1>
 			<div class="blurb">
-				Hi there! I am an ambitious third year Computer Science major at San Jose State University with interests in graphics, education, and more. I am always looking for opportunities to gain more knowledge about tech's quickest growing fields. Check out my blog to read about my experience at SIGGRAPH 2019!
+				Hi there! I am a rising 4th year student studying computer science at San Jose State University with past internships at Honeywell and Next Gen Personal Finance. Welcome to my personal portfolio!
     		</div><!-- /.blurb -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+			  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+			<script src="anime.min.js"></script>
+			<script> var ml = { timelines: {}};</script>
+			<script>
+				// Wrap every letter in a span
+				$('.ml9 .letters').each(function(){
+				  $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+				});
+
+				ml.timelines["ml9"] = anime.timeline({loop: true})
+				  .add({
+					targets: '.ml9 .letter',
+					scale: [0, 1],
+					duration: 1500,
+					elasticity: 600,
+					delay: function(el, i) {
+					  return 45 * (i+1)
+					}
+				  }).add({
+					targets: '.ml9',
+					opacity: 0,
+					duration: 1000,
+					easing: "easeOutExpo",
+					delay: 1000
+				  });
+				</script>
+
+
 			<div class="table">
     		<ul>
 				<li><a href="mailto:swati.chayapathi@sjsu.edu"><i class="fa fa-envelope" style="font-size: 26px; color: #92d4f7;"></i></a></li>
@@ -74,11 +108,13 @@
 			</div>
 		</div>
 		</section>
+		
 <p id="blog" class="section_title">blog</p>
 
 <section>
 <div class="row">
-<div class="col-lg-6">
+
+<div class="post">
 <div data-aos="fade-up">
   <div class="fancy_card">
     <img src="images/strangerthings.jpg" alt="Creativity" height="200px" class="card_image">
@@ -103,7 +139,8 @@
   </div>
 </div>
 </div>
-  <div class="col-lg-6">
+
+  <div class="post">
   <div data-aos="fade-up">
   <div class="fancy_card">
     <img src="images/angkorwat.png" alt="Angkor Wat" height="200px" class="card_image">
@@ -126,8 +163,13 @@
       </div>
     </div>
   </div>
+  </div>
+
+</div>
 </div>
 
+<div class="row">
+<div class="post">
 <div data-aos="fade-up">
 	<div class="fancy_card">
     <img src="images/siggraph.png" alt="SIGGRAPH" height="200px" class="card_image">
@@ -153,6 +195,9 @@
 </div>
 </div>
 </div>
+
+
+
 </section>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
