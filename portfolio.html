@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swati chayapathi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@800&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        :root {
+            --blue-color: #c7d9dd;
+            --blue-light: #c5e0ff;
+            --green-color: #c7d9dd;
+            --green-light: #d4f5e4;
+            --purple-color: #77aca2;
+            --purple-light: #eedcfc;
+            --text-color: #23022e;
+            --light-bg: #faf3dd;
+        }
+        
+        body {
+            font-family: 'Open Sans';
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+
+        h1, h2, h3 {
+            color: var(--text-color);
+        }
+
+        /* Header styles */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: transparent;
+        }
+
+        .name-title {
+            font-family: 'Arima Madurai', cursive;
+            font-size: 6.5rem; /* Increased from 3.5rem */
+            margin-bottom: 15px;
+            color: #adb2d4;
+        }
+
+        .summary {
+            max-width: 700px;
+            margin: 0 auto 15px;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Navigation styles */
+        .nav-container {
+            background-color: transparent;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            gap: 20px;
+        }
+
+        .nav-item {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item[data-section="experience"]:hover {
+            background-color: var(--blue-light);
+        }
+
+        .nav-item[data-section="projects"]:hover {
+            background-color: var(--green-light);
+        }
+
+        .nav-item[data-section="leadership"]:hover {
+            background-color: var(--purple-light);
+        }
+
+        .nav-item.active[data-section="experience"] {
+            background-color: var(--blue-color);
+            color: white;
+        }
+
+        .nav-item.active[data-section="projects"] {
+            background-color: var(--green-color);
+            color: white;
+        }
+
+        .nav-item.active[data-section="leadership"] {
+            background-color: var(--purple-color);
+            color: white;
+        }
+
+        .content-container {
+            padding: 20px;
+        }
+
+        .section {
+            padding: 40px 0;
+            min-height: 70vh;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem; /* Increased from 2rem */
+            position: relative;
+        }
+        
+        .section#experience .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--blue-color);
+            margin: 10px auto;
+        }
+
+        .section#projects .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--green-color);
+            margin: 10px auto;
+        }
+
+        .section#leadership .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--purple-color);
+            margin: 10px auto;
+        }
+
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        #experience .timeline::after {
+            background-color: var(--blue-color);
+        }
+
+        #projects .timeline::after {
+            background-color: var(--green-color);
+        }
+
+        #leadership .timeline::after {
+            background-color: var(--purple-color);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 10px; /* Reduced for more vertical overlap */
+        }
+
+        /* Triangles pointing to timeline cards */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 15px;
+            z-index: 1;
+        }
+
+        #experience .timeline-item.left::after {
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 15px solid var(--blue-color);
+            right: 25px;
+        }
+
+        #experience .timeline-item.right::after {
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid var(--blue-color);
+            left: 25px;
+        }
+
+        #projects .timeline-item.left::after {
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 15px solid var(--green-color);
+            right: 25px;
+        }
+
+        #projects .timeline-item.right::after {
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid var(--green-color);
+            left: 25px;
+        }
+
+        #leadership .timeline-item.left::after {
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 15px solid var(--purple-color);
+            right: 25px;
+        }
+
+        #leadership .timeline-item.right::after {
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid var(--purple-color);
+            left: 25px;
+        }
+
+        /* Logo placeholders - moved to the outside edges */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: white;
+            top: 0;
+            z-index: 2;
+        }
+
+        #experience .timeline-item::before {
+            border: 3px solid var(--blue-color);
+        }
+
+        #projects .timeline-item::before {
+            border: 3px solid var(--green-color);
+        }
+
+        #leadership .timeline-item::before {
+            border: 3px solid var(--purple-color);
+        }
+
+        .timeline-item.left::before {
+            left: -25px;
+        }
+
+        .timeline-item.right::before {
+            right: -25px;
+        }
+
+        .left {
+            left: 0;
+            text-align: right;
+            padding-right: 60px;
+        }
+
+        .right {
+            left: 50%;
+            padding-left: 60px;
+        }
+
+        .timeline-content {
+            padding: 20px 25px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #experience .timeline-date {
+            color: var(--blue-color);
+        }
+
+        #projects .timeline-date {
+            color: var(--green-color);
+        }
+
+        #leadership .timeline-date {
+            color: var(--purple-color);
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .timeline-subtitle {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .timeline-description {
+            margin-top: 15px;
+        }
+
+        .timeline-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            gap: 5px;
+        }
+
+        .timeline-tag {
+            background-color: #ecf0f1;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            color: #2c3e50;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left;
+            }
+
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 50px;
+                right: auto;
+                border-left: 0;
+                border-right: 15px solid var(--blue-color);
+            }
+
+            #projects .timeline-item.left::after,
+            #projects .timeline-item.right::after {
+                border-right-color: var(--green-color);
+            }
+
+            #leadership .timeline-item.left::after,
+            #leadership .timeline-item.right::after {
+                border-right-color: var(--purple-color);
+            }
+
+            .timeline-item.left::before,
+            .timeline-item.right::before {
+                left: 5px;
+                right: auto;
+            }
+
+            .left, .right {
+                left: 0;
+                padding-right: 25px;
+                padding-left: 70px;
+            }
+            
+            .nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .name-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Name and Summary -->
+    <header class="header">
+        <h1 class="name-title">Swati Chayapathi</h1>
+        <h4>developer. designer. dancer.</h4>
+        <div class="summary">
+            Software engineer experienced in WebRTC, audio tools. Seeking opportunities to apply technical skills to solve real-world problems.
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <ul class="nav">
+            <li class="nav-item active" data-section="experience">Experience</li>
+            <li class="nav-item" data-section="projects">Projects</li>
+            <li class="nav-item" data-section="leadership">Leadership</li>
+        </ul>
+    </div>
+
+    <div class="content-container">
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <h2 class="section-title">Experience</h2>
+
+            <div class="timeline">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2023 - August 2023</div>
+                        <h3 class="timeline-title">Software Engineering Intern</h3>
+                        <h4 class="timeline-subtitle">Google</h4>
+                        <p class="timeline-description">
+                            Developed and implemented features for internal tools. Enhanced data visualization dashboard used by thousands of employees.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">React</span>
+                            <span class="timeline-tag">TypeScript</span>
+                            <span class="timeline-tag">RESTful APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">August 2022 - May 2023</div>
+                        <h3 class="timeline-title">Research Assistant</h3>
+                        <h4 class="timeline-subtitle">University Research Lab</h4>
+                        <p class="timeline-description">
+                            Conducted research on machine learning applications. Published paper at conference.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">Machine Learning</span>
+                            <span class="timeline-tag">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May 2022 - August 2022</div>
+                        <h3 class="timeline-title">Software Developer Intern</h3>
+                        <h4 class="timeline-subtitle">Tech Startup</h4>
+                        <p class="timeline-description">
+                            Built full-stack web application features and fixed critical bugs. Worked in an agile environment.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">JavaScript</span>
+                            <span class="timeline-tag">Node.js</span>
+                            <span class="timeline-tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">January 2022 - May 2022</div>
+                        <h3 class="timeline-title">Teaching Assistant</h3>
+                        <h4 class="timeline-subtitle">University CS Department</h4>
+                        <p class="timeline-description">
+                            Assisted professor with curriculum development. Held weekly office hours to help students with programming assignments.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Java</span>
+                            <span class="timeline-tag">Data Structures</span>
+                            <span class="timeline-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section" style="display: none;">
+            <h2 class="section-title">Projects</h2>
+
+            <div class="timeline">
+                <!-- Project Item 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">January 2023 - Present</div>
+                        <h3 class="timeline-title">Personal Portfolio Website</h3>
+                        <p class="timeline-description">
+                            Designed and developed a responsive personal portfolio website to showcase projects and experience.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">HTML</span>
+                            <span class="timeline-tag">CSS</span>
+                            <span class="timeline-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">October 2022 - December 2022</div>
+                        <h3 class="timeline-title">Machine Learning Classifier</h3>
+                        <p class="timeline-description">
+                            Built a classification model to predict outcomes based on historical data with 94% accuracy.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">Python</span>
+                            <span class="timeline-tag">Scikit-learn</span>
+                            <span class="timeline-tag">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Item 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">August 2022 - September 2022</div>
+                        <h3 class="timeline-title">E-commerce Mobile App</h3>
+                        <p class="timeline-description">
+                            Developed a cross-platform mobile application for online shopping with user authentication and product browsing.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="timeline-tag">React Native</span>
+                            <span class="timeline-tag">Firebase</span>
+                            <span class="timeline-tag">Redux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Section -->
+        <section id="leadership" class="section" style="display: none;">
+            <h2 class="section-title">Leadership Experience</h2>
+
+            <div class="timeline">
+                <!-- Leadership Item 1 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 2022 - Present</div>
+                        <h3 class="timeline-title">Computer Science Club President</h3>
+                        <h4 class="timeline-subtitle">University CS Club</h4>
+                        <p class="timeline-description">
+                            Lead a team of 5 officers to organize weekly workshops, hackathons, and industry networking events.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Leadership Item 2 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">January 2022 - May 2022</div>
+                        <h3 class="timeline-title">Hackathon Team Lead</h3>
+                        <h4 class="timeline-subtitle">Regional Tech Competition</h4>
+                        <p class="timeline-description">
+                            Led a team of 4 developers to build and present a web application that won 2nd place.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Leadership Item 3 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">August 2021 - December 2021</div>
+                        <h3 class="timeline-title">Student Mentor</h3>
+                        <h4 class="timeline-subtitle">University Mentorship Program</h4>
+                        <p class="timeline-description">
+                            Provided guidance and support to 5 first-year computer science students, helping them navigate coursework and career planning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation for timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+            
+            // Navigation functionality - toggle style
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetSection = this.getAttribute('data-section');
+                    const isActive = this.classList.contains('active');
+                    
+                    // If clicking on an already active item, do nothing
+                    if (isActive) return;
+                    
+                    // Update active nav item
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target section, hide others
+                    sections.forEach(section => {
+                        if (section.id === targetSection) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
